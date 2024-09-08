@@ -1,5 +1,5 @@
-### Poemix
-## UA
+# Poemix
+### UA
 Привіт! Я створив пет-проєкт мета якого покращити вивчення (запам'ятовування) віршів (текстів) напам'ять — Віршич (англ. Poemix). 
 Якщо коротко, то користувач вставляє вірш (текст) у поле вводу, після чого появляється віконце, 
 де користувачу потрібно буде вводити по рядку тексту з вірша, та перевіряти свій результат, 
@@ -12,7 +12,7 @@
 Також є опція обирати складність коли користувач натискає перевірити рядок. 
 При складній складності висвічується перше слово, при середній - кожне друге слово пропадає, і так далі.
 
-## EN
+### EN
 Hello! I've created a pet project aimed at improving the memorization of poems (texts). 
 In short, the user pastes a poem (text) into the input field, 
 after which a window appears where the user needs to input the poem line by line and check their result. 
