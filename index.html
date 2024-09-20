@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="adonexmin.css">
+	<link rel="shortcut icon" href="iconUA.png">
+	<title>adattoweb | ВІРШИЧ</title>
+</head>
+<body>
+	<div class="wrapper flex flexdc">
+		<div class="adaptive-menu" id="navigation">
+			<ul class="adapt-list">
+				<li><a href="#">На сайт розробника</a></li>
+				<li><a href="#">Github</a></li>
+				<li><a href="./indexEN.html">EN</a></li>
+				<li><a href="#" onclick ="showStats(`stats`), adaptive()">Статистика</a></li>
+				<li><a href="#" onclick="fontFunc()">Збільшити розмір</a></li>
+				<li><a href="#" onclick="setTheme(true)">Змінити тему</a></li>
+			</ul>
+		</div>
+		<div class="header flex alic jsc dt" id="header">
+			<div class="name monalter" >ВІРШИЧ</div>
+			<div class="nav flex jsc alic">
+				<ul class="nav-list flex jsc alic">
+					<li><a class="monalter" href="#">На сайт розробника</a></li>
+					<li><a class="monalter" href="https://github.com/adattoweb">Github</a></li>
+				</ul>
+				<div class="twonav flex jsc alic">
+					<a href="indexEN.html" id="lang" class="lang mon">EN</a>
+					<p class = "font" id="font" onclick="fontFunc()">A</p>
+					<div class="toggle-wrapper">
+  						<input type="checkbox" id="toggle" class="toggle-checkbox" onchange="setTheme()">
+  						<label for="toggle" class="toggle-label">
+    						<span class="toggle-slider"></span>
+  						</label>
+					</div>
+					<div class="info-container" onclick ="showStats(`stats`)">
+						<img src="./info.png" alt="Stats" class="info">
+					</div>
+				</div>
+			</div>
+			<button onclick = "adaptive()" class="menu-button" type="button" aria-label="close" aria-controls="navigation" aria-expanded="false">
+			</button></div>
+			<div class="stats flex flexdc dt" id="stats">
+				<p>Всього віршів вставлено: <span id="virshstat"></span></p>
+				<p>Всього рядків вставлено: <span id="strstat"></span></p>
+				<p>Кількість помилок: <span id="errorstat"></span></p>
+				<p>Кількість підглядувань: <span id="viewstat"></span></p>
+			</div>
+
+			<div class="error flex dt" id = "error"><p id="error-text"></p></div>
+		<div class="content flex jsc alic">
+			<div class="form-main-container dt flex flexdc alic" id="form1">
+				<p class="form-name monalter">ВІРШИЧ</p>
+				<div class="form-main flex flexdc alic">
+					<div class="form-block flex flexdc">
+						<label for="name">Назва вірша і автор</label>
+						<input class="dt-input" type="text" id="name">
+					</div>
+					<div class="form-block flex flexdc">
+						<label for="virsh">Вірш <span class="imp">*</span></label>
+						<textarea class="dt-input" name="virsh1" id="virsh"></textarea>
+					</div>
+					<div class="form-block flex flexdc">
+						<label for="difficult">Складність</label>
+						<input type="number" class="dt-input" id="difficult">
+					</div>
+					<div class="form-block flex flexdc">
+						<label for="start">З якого рядка починати</label>
+						<input class="dt-input" type="number" id="start">
+					</div>
+					<div class="btncon flex jsc alic"><button id="btn1" onclick="checkStart()" class="form-button">Розпочати</button><div onclick ="gotoForm(`form1`, `form4`)" class="quest flex jsc alic " id="btn1">?</div></div>
+				</div>
+			</div>
+			<div class="form-main-container dt flex flexdc alic formtwo" id="form2">
+				<div class="header-close flex"><div onclick ="gotoForm(`form2`, `form1`)" id="close" class="close flex jsc alic">X</div></div>
+				<p class="form-name monalter">ВІРШИЧ<p id = "percent" class="percent"></p></p>
+				<div class="form-main flex flexdc">
+					<div class="form-block flex flexdc">
+						<label for="answer">Введіть <span id ="enter"></span> рядок</label>
+						<input class="dt-input" type="text" id="answer" oninput="showPercent()">
+					</div>
+					<div class="btncon flex jsc alic"><button class="form-button flex jsc alic dali" id="btn1" onclick="nextString()">Далі <img  id ="arrow"src="./Arrow 1.png" alt="arrow"></button><div class="quest flex jsc alic" id="btn1" onclick="gotoForm(`form2`, `form3`)">?</div></div>
+				</div>
+			</div>
+			<div class="form-main-container dt flex flexdc alic formtwo" id="form3">
+				<div class="header-close flex"><div onclick ="gotoForm(`form3`, `form2`)" id="close" class="close flex jsc alic">X</div></div>
+				<p class="form-name monalter">ВІРШИЧ</p>
+				<div class="form-main flex flexdc">
+					<div class="form-block flex flexdc">
+						<label for="answer">Правильна відповідь</label>
+						<p for="answer" class="anscheck" id="anscheck"></p>
+					</div>
+					<div class="btncon flex jsc alic"><button id="btn1" onclick ="viewTrue()" class="form-button flex jsc alic dali">Зрозуміло</button></div>
+				</div>
+			</div>
+			<div class="form-main-container dt flex flexdc alic formtwo" id="form4">
+				<div class="header-close flex"><div onclick ="gotoForm(`form4`, `form1`)" id="close" class="close flex jsc alic">X</div></div>
+				<p class="form-name monalter">ВІРШИЧ</p>
+				<div class="form-main flex flexdc">
+					<div class="form-block flex flexdc">
+						<label for="answer">Інструкція</label>
+						<p class="pinfo">POEMIX (Віршич) створенний для кращого запам'ятовування віршів</p>
+						<p class="pinfo">У перше поле введіть назву вірша а також автора (не обов'язково)</p>
+						<p class="pinfo">У поле "Вірш" вставте скопійований вірш з інтернету</p>
+						<p class="pinfo">Поле складність дає Вам змогу обрати скільки слів у підказці Ви побачите. (Необов)</p>
+						<p class="pinfo">Підказку можна знайти натиснувши на знак питання коли даєте відповідь</p>
+						<p class="pinfo">"З якого рядка починати" - оберіть з якого рядка у вірші починати. (Необов)</p>
+						<p class="pinfo">P.S у нас також є ігнор. спец. символів тому не обов'язково ставити коми та крапки коли пишите відповідь.</p>
+						<p class="pinfo">Ви також маєте можливість збільшити/зменшити розмір натиснувши на A</p>
+					</div>
+					<div class="btncon flex jsc alic"><button id="btn1" onclick ="gotoForm(`form4`, `form1`)" class="form-button flex jsc alic dali">Зрозуміло</button></div>
+				</div>
+			</div>
+			<div class="form-main-container dt flex flexdc alic formtwo" id="form5">
+				<div class="header-close flex"><div onclick ="gotoForm(`form5`, `form1`)" id="close" class="close flex jsc alic">X</div></div>
+				<p class="form-name monalter">ВІРШИЧ</p>
+				<div class="form-main flex flexdc">
+					<div class="form-block flex flexdc">
+						<label for="answer">Кінець!</label>
+						<p class="pinfo">Назва вірша і автор: <span id="nameval"></span></p>
+						<p class="pinfo">Помилок допущено: <span id="errorval"></span></p>
+						<p class="pinfo">Всього рядків: <span id="lenval"></span></p>
+						<p class="pinfo">Підглядано разів: <span id="viewval"></span></p>
+					</div>
+					<div class="btncon flex jsc alic"><button id="btn1" onclick ="gotoForm(`form5`, `form1`)" class="form-button flex jsc alic dali">Зрозуміло</button></div>
+				</div>
+			</div>
+		</div>
+		<div class="footer flex alic dt">
+			<div class="footercon flex flexdc">
+				<div class="footer-name monalter">ВІРШИЧ</div>
+				<div class="footer-text">
+					<p>Copyright © Poemix 2024. Всі права захищені.</p>
+					<p>Розроблено розробником adatto (або adattoweb або adonex)</p>
+					<p>У телеграмі і діскорді @adattoweb</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>
