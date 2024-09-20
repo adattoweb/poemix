@@ -213,7 +213,7 @@ function resetStats(statName) {
 		localStorage.removeItem('statStrings');
 		console.log("Вся статистика була видалена.")
 	} else {
-		localStorage.removeItem('statName');
+		localStorage.removeItem(statName);
 		console.log("Комірка " + statName + " була успішно анульована.")
 	}
 }
