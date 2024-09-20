@@ -214,7 +214,7 @@ function resetStats(statName) {
 		console.log("Вся статистика була видалена.")
 	} else {
 		localStorage.removeItem('statName');
-		console.log("Комірка " + statName + "була успішно анульована.")
+		console.log("Комірка " + statName + " була успішно анульована.")
 	}
 }
 function showPercent(){
