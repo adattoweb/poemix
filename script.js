@@ -133,7 +133,7 @@ function nextString(){
 	percent.innerHTML = "0%";
 
 	console.log("Правильна відповідь: " + answerik)
-	let twoRightAnswer = answerik.toLowerCase().replace(/[\.\?,!,—]/g, "")
+	let twoRightAnswer = answerik.toLowerCase().replace(/[\.\?,!,—,;]/g, "")
 	if(userAnswer.value.toLowerCase() === twoRightAnswer){
 		if(now === strings.length) endPoemix()
 		enter.innerHTML = now + 1 + "";
