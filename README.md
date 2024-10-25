@@ -12,6 +12,15 @@
 Також є опція обирати складність коли користувач натискає перевірити рядок. 
 При складній складності висвічується перше слово, при середній - кожне друге слово пропадає, і так далі.
 
+#### ОНОВЛЕННЯ 2.0.0
+Тепер додано цілих два нових режиму (ДЕТАЛЬНІШЕ НА САЙТІ В ІНСТРУКЦІЇ):
+- Послідовний
+- Мозаїчний
+Покращено візуальний вигляд інструкції
+Додано сторінку Історія де користувач може дивитися останні вірші які він проходив, а також наново їх проходити.
+Додано опцію таймер за допомогою якої можна встановлювати собі таймер, та намагатися пройти вірш за деякий час.
+
+
 ### EN
 Hello! I've created a pet project aimed at improving the memorization of poems (texts). 
 In short, the user pastes a poem (text) into the input field, 
@@ -24,3 +33,10 @@ In the Poemix memorization tool, there is also an option to track users improvem
 The statistics show how many times a user has reviewed/studied poems and the number of mistakes made.
 Additionally, users can choose the difficulty level when checking a line. In high difficulty, 
 only the first word is shown; in medium difficulty, every second word disappears, and so on.
+#### UPDATE 2.0.0
+Now two new modes have been added (FOR MORE DETAILS ON THE WEBSITE IN THE INSTRUCTIONS):
+- The next one
+- Mosaic
+The visible appearance of the instructions has been improved
+A History page has been added, where the user can view the last poems he has passed, as well as repass them.
+Added a timer option where you can set yourself a timer and try to get the poem within a certain amount of time.
