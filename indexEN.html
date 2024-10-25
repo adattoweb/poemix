@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="uk">
+<!DOCTYPE html> 
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,26 +10,28 @@
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="adonexmin.css">
-	<link rel="shortcut icon" href="iconEN.png">
+	<link rel="shortcut icon" href="iconUA.png">
 	<title>adattoweb | POEMIX</title>
 </head>
-<body>
+<body id="body">
 	<div class="wrapper flex flexdc">
 		<div class="adaptive-menu" id="navigation">
 			<ul class="adapt-list">
-				<li><a href="#">Developer website</a></li>
+				<li><a href="#">Developer's site</a></li>
+				<li><a href="#">History</a></li>
 				<li><a href="#">Github</a></li>
 				<li><a href="./index.html">UA</a></li>
-				<li><a href="#" onclick ="showStats(`stats`)">Stats</a></li>
-				<li><a href="#" onclick="fontFunc()">Increase font size</a></li>
+				<li><a href="#" onclick ="showStats(`stats`), adaptive()">Statistics</a></li>
+				<li><a href="#" onclick="fontFunc()">Increase size</a></li>
 				<li><a href="#" onclick="setTheme(true)">Change theme</a></li>
 			</ul>
 		</div>
 		<div class="header flex alic jsc dt" id="header">
-			<div class="name monalter" >POEMIX</div>
+			<div class="name monalter">POEMIX</div>
 			<div class="nav flex jsc alic">
 				<ul class="nav-list flex jsc alic">
-					<li><a class="monalter" href="#">Developer website</a></li>
+					<li><a class="monalter" href="#">Developer's site</a></li>
+					<li><a class="monalter" href="#" id="ht" onclick="historyShow()">History</a></li>
 					<li><a class="monalter" href="https://github.com/adattoweb">Github</a></li>
 				</ul>
 				<div class="twonav flex jsc alic">
@@ -41,27 +43,25 @@
     						<span class="toggle-slider"></span>
   						</label>
 					</div>
-
-					<div class="info-container" onclick="showStats('stats')">
+					<div class="info-container" onclick ="showStats(`stats`)">
 						<img src="./info.png" alt="Stats" class="info">
 					</div>
 				</div>
 			</div>
-			<button onclick = "adaptive()" class="menu-button" type="button" aria-label="close" aria-controls="navigation" aria-expanded="false">
-			</button>
-		</div>
-		<div class="stats flex flexdc dt" id="stats">
-			<p>Total poems entered: <span id="virshstat"></span></p>
-			<p>Total lines entered: <span id="strstat"></span></p>
-			<p>Number of mistakes: <span id="errorstat"></p>
-			<p>Number of hints: <span id="viewstat"></p>
-		</div>
+			<button onclick="adaptive()" class="menu-button" type="button" aria-label="close" aria-controls="navigation" aria-expanded="false">
+			</button></div>
+			<div class="stats flex flexdc dt" id="stats">
+				<p>Total poems completed: <span id="virshstat"></span></p>
+				<p>Total lines completed: <span id="strstat"></span></p>
+				<p>Number of mistakes: <span id="errorstat"></span></p>
+				<p>Number of peeks: <span id="viewstat"></span></p>
+			</div>
 
-		<div class="error flex dt" id="error"><p id="error-text"></p></div>
-		<div class="content flex jsc alic">
+			<div class="error flex dt" id="error"><p id="error-text"></p></div>
+		<div id="content" class="content flex jsc alic">
 			<div class="form-main-container dt flex flexdc alic" id="form1">
 				<p class="form-name monalter">POEMIX</p>
-				<div class="form-main flex flexdc">
+				<div class="form-main flex flexdc alic">
 					<div class="form-block flex flexdc">
 						<label for="name">Poem title and author</label>
 						<input class="dt-input" type="text" id="name">
@@ -70,83 +70,166 @@
 						<label for="virsh">Poem <span class="imp">*</span></label>
 						<textarea class="dt-input" name="virsh1" id="virsh"></textarea>
 					</div>
-					<div class="form-block flex flexdc">
+					<div class="form-block flex flexdc" id="difbl">
 						<label for="difficult">Difficulty</label>
 						<input type="number" class="dt-input" id="difficult">
 					</div>
+					<div class="form-block flex flexdc" id="difcheck">
+						<label for="difficulttwo">the number of options</label>
+						<input type="number" class="dt-input" id="amounstring">
+					</div>
 					<div class="form-block flex flexdc">
-						<label for="start">Starting line</label>
+						<label for="timer">Timer</label>
+						<input class="dt-input" type="number" id="timer">
+					</div>
+					<div class="form-block flex flexdc">
+						<label for="start">From which line to start</label>
 						<input class="dt-input" type="number" id="start">
 					</div>
-					<div class="btncon flex jsc alic"><button id="btn1" onclick="checkStart()" class="form-button">Start</button><div onclick="gotoForm('form1', 'form4')" class="quest flex jsc alic" id="btn1">?</div></div>
+					<div class="check-parrent flex flexdc">
+					    <label class="custom-checkbox">
+					        <input type="checkbox" id="poslidov" onchange="checkBox('poslidov')">
+					        <span class="checkmark"></span>
+					        Sequential mode
+					    </label>
+					    <label class="custom-checkbox">
+					        <input type="checkbox" id="mozaika" onchange="checkBox('mozaika')">
+					        <span class="checkmark"></span>
+					        Mosaic mode
+					    </label>
+					</div>
+
+					<div class="btncon flex jsc alic"><button id="btn1" onclick="checkStart()" class="form-button">Start</button><div onclick ="gotoForm(`form1`, `form4`)" class="quest flex jsc alic " id="btn1">?</div></div>
 				</div>
 			</div>
 			<div class="form-main-container dt flex flexdc alic formtwo" id="form2">
-				<div class="header-close flex"><div onclick="gotoForm('form2', 'form1')" id="close" class="close flex jsc alic">X</div></div>
+				<div class="header-close flex"><div onclick ="gotoForm(`form2`, `form1`)" id="close" class="close flex jsc alic">X</div></div>
 				<p class="form-name monalter">POEMIX<p id="percent" class="percent"></p></p>
 				<div class="form-main flex flexdc">
 					<div class="form-block flex flexdc">
-						<label for="answer">Enter <span id="enter"></span> line</label>
+						<label for="answer">Enter <span id ="enter"></span> line</label>
 						<input class="dt-input" type="text" id="answer" oninput="showPercent()">
 					</div>
-					<div class="btncon flex jsc alic"><button class="form-button flex jsc alic dali" id="btn1" onclick="nextString()">Next <img id="arrow" src="./Arrow 1.png" alt="arrow"></button><div class="quest flex jsc alic" id="btn1" onclick="gotoForm('form2', 'form3')">?</div></div>
+					<div class="btncon flex jsc alic"><button class="form-button flex jsc alic dali" id="btn1" onclick="nextString()">Next <img id ="arrow" src="./Arrow 1.png" alt="arrow"></button><div class="quest flex jsc alic" id="btn1" onclick="gotoForm(`form2`, `form3`)">?</div></div>
 				</div>
 			</div>
 			<div class="form-main-container dt flex flexdc alic formtwo" id="form3">
-				<div class="header-close flex"><div onclick="gotoForm('form3', 'form2')" id="close" class="close flex jsc alic">X</div></div>
+				<div class="header-close flex"><div onclick ="viewTrue()" id="close" class="close flex jsc alic">X</div></div>
 				<p class="form-name monalter">POEMIX</p>
 				<div class="form-main flex flexdc">
 					<div class="form-block flex flexdc">
 						<label for="answer">Correct answer</label>
 						<p for="answer" class="anscheck" id="anscheck"></p>
 					</div>
-					<div class="btncon flex jsc alic"><button id="btn1" onclick="viewTrue()" class="form-button flex jsc alic dali">I got it</button></div>
+					<div class="btncon flex jsc alic"><button id="btn1" onclick ="viewTrue()" class="form-button flex jsc alic dali">Understood</button></div>
 				</div>
+			</div><div class="form-main-container dt flex flexdc alic formtwo" id="form3">
+    <div class="header-close flex"><div onclick="viewTrue()" id="close" class="close flex jsc alic">X</div></div>
+    <p class="form-name monalter">POEMIX</p>
+    <div class="form-main flex flexdc">
+        <div class="form-block flex flexdc">
+            <label for="answer">Correct answer</label>
+            <p for="answer" class="anscheck" id="anscheck"></p>
+        </div>
+        <div class="btncon flex jsc alic"><button id="btn1" onclick="viewTrue()" class="form-button flex jsc alic dali">Understood</button></div>
+    </div>
+</div>
+<div class="form-main-container dt flex flexdc alic formtwo" id="form4">
+    <div class="header-close flex"><div onclick="gotoForm(`form4`, `form1`)" id="close" class="close flex jsc alic">X</div></div>
+    <p class="form-name monalter">INSTRUCTION</p>
+    <div class="form-main flex flexdc">
+        <div class="form-block flex flexdc">
+            <p class="pinfo">POEMIX (Poem) is created for better memorization of poems.</p>
+            <h4 class="hinfo">Navigation</h4>
+            <p class="pinfo">In the navigation, you can increase the font (A), change the theme, view your statistics, or switch to the English version of the site.</p>
+            <h4 class="hinfo">Required fields</h4>
+            <p class="pinfo">In the "Poem" field, paste the copied poem from the internet.</p>
+            <h4 class="hinfo">Optional fields</h4>
+            <p class="pinfo">"Title and author of the poem" - enter the title and author of the poem (for yourself).</p>
+            <p class="pinfo">"Difficulty" - choose how many words you will see in the hint.</p>
+            <p class="pinfo">"Start from which line" - choose which line of the poem to start from, so you don't have to start from the first one.</p>
+            <p class="pinfo">"Timer" - set a goal to complete a poem in a certain amount of time.</p>
+            <h4 class="hinfo">Sequential mode</h4>
+            <p class="pinfo">Sequential mode is where you need to establish the correct sequence of the lines of the poem. In this mode, it is better to remember the chronology of the poem, which is also a very important part.</p>
+            <p class="pinfo">In the line count field, choose the number of options you want to see in this mode.</p>
+            <h4 class="hinfo">Mosaic mode</h4>
+            <p class="pinfo">Mosaic mode (puzzle) is the same as sequential mode, but in sequential mode you specify the chronology of the lines, while in mosaic mode you specify the order of the words in the line.</p>
+            <h4 class="hinfo">History</h4>
+            <p class="pinfo">In the history, you can view all poems (their titles, if specified) as well as the time when you studied this poem.</p>
+            <p class="pinfo">There is also a very cool feature - copying. It allows you to click the required button to open the form already with the poem text.</p>
+            <h4 class="hinfo">Other details</h4>
+            <p class="pinfo">You can find a hint by clicking the question mark when giving an answer.</p>
+            <p class="pinfo">We also have an ignore feature for special characters, so it's not necessary to put commas and periods when writing your answer.</p>
+        </div>
+        <div class="btncon flex jsc alic"><button id="btn1" onclick="gotoForm(`form4`, `form1`)" class="form-button flex jsc alic dali">Understood</button></div>
+    </div>
+</div>
+<div class="form-main-container dt flex flexdc alic formtwo" id="form5">
+    <div class="header-close flex"><div onclick="gotoForm(`form5`, `form1`)" id="close" class="close flex jsc alic">X</div></div>
+    <p class="form-name monalter">POEMIX</p>
+    <div class="form-main flex flexdc">
+        <div class="form-block flex flexdc">
+            <label for="answer">The end!</label>
+            <p class="pinfo">Title of the poem and author: <span id="nameval"></span></p>
+            <p class="pinfo">Mistakes made: <span id="errorval"></span></p>
+            <p class="pinfo">Total lines: <span id="lenval"></span></p>
+            <p class="pinfo">Peeked at times: <span id="viewval"></span></p>
+        </div>
+        <div class="btncon flex jsc alic"><button id="btn1" onclick="gotoForm(`form5`, `form1`)" class="form-button flex jsc alic dali">Understood</button></div>
+    </div>
+</div>
+<div class="form-main-container dt flex flexdc alic formtwo" id="form6">
+    <div class="header-close flex"><div onclick="gotoForm(`form6`, `form1`)" id="close" class="close flex jsc alic">X</div></div>
+
+    <p class="form-name monalter">POEMIX<p id="percent" class="percent"></p></p>
+    <div class="form-main flex flexdc">
+        <div class="form-block flex flexdc">
+            <h4 class="monalter choose">Choose the correct sequence</h4>
+            <p class="monalter">Current line: <span id="checknow"></span></p>
+            <div class="select-blocks flex flexdc" id="select-block">
+            </div>
+        </div>
+        <div class="btncon flex jsc alic"><button class="form-button flex jsc alic dali" id="btn1" onclick="nextPoslidov()">Next <img id="arrow" src="./Arrow 1.png" alt="arrow"></button><div class="quest flex jsc alic" id="btn1" onclick="gotoForm(`form6`, `form3`)">?</div></div>
+    </div>
+    
+</div>
+<div class="form-main-container dt flex flexdc alic formtwo" id="form7">
+    <div class="header-close flex"><div onclick="gotoForm(`form7`, `form1`)" id="close" class="close flex jsc alic">X</div></div>
+
+    <p class="form-name monalter">POEMIX</p>
+    <div class="form-main flex flexdc">
+        <div class="form-block flex flexdc" id="mozaika-form">
+            <h4 class="monalter choose">Choose the correct sequence</h4>
+            <p class="monalter">Current line: <span id="mozaikanow">1</span></p>
+            <p class="monalter">Answer: <span id="mozaikaanswer"></span></p>
+            <div id="mozaika-blocks" class="mozaika-blocks flex jsc alic"></div>
+        </div>
+        <div class="btncon flex jsc alic"><div class="quest flex jsc alic" id="btn1" onclick="gotoForm(`form7`, `form3`)">?</div><button class="form-button flex jsc alic dali" id="btn1" onclick="nextString()">Next <img id="arrow" src="./Arrow 1.png" alt="arrow"></button>
+        <div class="monalter mozaika-delete" onclick="deleteMozaika()"><img src="./deleteword.png" alt="Delete word"></div></div>
+        </div>
+        
+</div>
+</div>
+<div id="history-con" class="history-content flex jsc alic">
+	<div class="history-header-main alic dt">
+				<p class="ppp">Currently on the page: <span id="numofpoemix">10</span> poems</p>
+				<p class="ppp" onclick="plusHistory(10)">Add 10 more poems</p>
 			</div>
-			<div class="form-main-container dt flex flexdc alic formtwo" id="form4">
-				<div class="header-close flex"><div onclick="gotoForm('form4', 'form1')" id="close" class="close flex jsc alic">X</div></div>
-				<p class="form-name monalter">POEMIX</p>
-				<div class="form-main flex flexdc">
-					<div class="form-block flex flexdc">
-						<label for="answer">Instructions</label>
-						<p class="pinfo">POEMIX (ukranian "Віршич") was created to help better memorize poems</p>
-						<p class="pinfo">In the first field, enter the title of the poem and the author (optional)</p>
-						<p class="pinfo">In the "Poem" field, paste the copied poem from the internet</p>
-						<p class="pinfo">The "Difficulty" field allows you to select how many words will appear in the hint. (Optional)</p>
-						<p class="pinfo">You can find the hint by clicking on the question mark when answering</p>
-						<p class="pinfo">"Starting line" - choose which line in the poem to start from. (Optional)</p>
-						<p class="pinfo">P.S. Special characters are ignored, so it's not necessary to use commas and periods when typing your answer.</p>
-						<p class="pinfo">You can also adjust the font size by clicking on the "A"</p>
-					</div>
-					<div class="btncon flex jsc alic"><button id="btn1" onclick="gotoForm('form4', 'form1')" class="form-button flex jsc alic dali">I got it</button></div>
-				</div>
-			</div>
-			<div class="form-main-container dt flex flexdc alic formtwo" id="form5">
-				<div class="header-close flex"><div onclick="gotoForm('form5', 'form1')" id="close" class="close flex jsc alic">X</div></div>
-				<p class="form-name monalter">POEMIX</p>
-				<div class="form-main flex flexdc">
-					<div class="form-block flex flexdc">
-						<label for="answer">End!</label>
-						<p class="pinfo">Poem title and author: <span id="nameval"></span></p>
-						<p class="pinfo">Number of mistakes made: <span id="errorval"></span></p>
-						<p class="pinfo">Total lines: <span id="lenval"></span></p>
-						<p class="pinfo">Number of hints used: <span id="viewval"></span></p>
-					</div>
-					<div class="btncon flex jsc alic"><button id="btn1" onclick="gotoForm('form5', 'form1')" class="form-button flex jsc alic dali"> I got it</button></div>
-				</div>
-			</div>
-		</div>
-		<div class="footer flex alic dt">
-			<div class="footercon flex flexdc">
-				<div class="footer-name monalter">POEMIX</div>
-				<div class="footer-text">
-					<p>Copyright © Poemix 2024. All rights reserved.</p>
-					<p>Developed by developer adatto (or adattoweb or adonex)</p>
-					<p>On Telegram and Discord @adattoweb</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script src="script.js"></script>
+</div>
+</div>
+<div class="footer flex alic dt">
+    <div class="footercon flex flexdc">
+        <div class="footer-name monalter">POEMIX</div>
+        <div class="footer-text">
+            <p>Copyright © Poemix 2024. All rights reserved.</p>
+            <p>Developed by the developer adattoweb (or adatto)</p>
+            <p>On Telegram and Discord @adattoweb</p>
+            <p>Version Poemix: 2.0.0</p>
+        </div>
+    </div>
+</div>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
+

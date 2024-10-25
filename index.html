@@ -13,11 +13,12 @@
 	<link rel="shortcut icon" href="iconUA.png">
 	<title>adattoweb | ВІРШИЧ</title>
 </head>
-<body>
+<body id="body">
 	<div class="wrapper flex flexdc">
 		<div class="adaptive-menu" id="navigation">
 			<ul class="adapt-list">
 				<li><a href="#">На сайт розробника</a></li>
+				<li><a href="#" id="d1" onclick="historyShow()">Історія</a></li>
 				<li><a href="#">Github</a></li>
 				<li><a href="./indexEN.html">EN</a></li>
 				<li><a href="#" onclick ="showStats(`stats`), adaptive()">Статистика</a></li>
@@ -30,6 +31,7 @@
 			<div class="nav flex jsc alic">
 				<ul class="nav-list flex jsc alic">
 					<li><a class="monalter" href="#">На сайт розробника</a></li>
+					<li><a class="monalter" href="#" id="ht" onclick="historyShow()">Історія</a></li>
 					<li><a class="monalter" href="https://github.com/adattoweb">Github</a></li>
 				</ul>
 				<div class="twonav flex jsc alic">
@@ -48,15 +50,16 @@
 			</div>
 			<button onclick = "adaptive()" class="menu-button" type="button" aria-label="close" aria-controls="navigation" aria-expanded="false">
 			</button></div>
+			<div class="timer dt"></div>
 			<div class="stats flex flexdc dt" id="stats">
-				<p>Всього віршів вставлено: <span id="virshstat"></span></p>
-				<p>Всього рядків вставлено: <span id="strstat"></span></p>
+				<p>Всього віршів пройдено: <span id="virshstat"></span></p>
+				<p>Всього рядків пройдено: <span id="strstat"></span></p>
 				<p>Кількість помилок: <span id="errorstat"></span></p>
 				<p>Кількість підглядувань: <span id="viewstat"></span></p>
 			</div>
 
 			<div class="error flex dt" id = "error"><p id="error-text"></p></div>
-		<div class="content flex jsc alic">
+		<div id="content" class="content flex jsc alic">
 			<div class="form-main-container dt flex flexdc alic" id="form1">
 				<p class="form-name monalter">ВІРШИЧ</p>
 				<div class="form-main flex flexdc alic">
@@ -68,14 +71,35 @@
 						<label for="virsh">Вірш <span class="imp">*</span></label>
 						<textarea class="dt-input" name="virsh1" id="virsh"></textarea>
 					</div>
-					<div class="form-block flex flexdc">
+					<div class="form-block flex flexdc" id="difbl">
 						<label for="difficult">Складність</label>
 						<input type="number" class="dt-input" id="difficult">
+					</div>
+					<div class="form-block flex flexdc" id="difcheck">
+						<label for="difficulttwo">Кількість варіантів</label>
+						<input type="number" class="dt-input" id="amounstring">
+					</div>
+					<div class="form-block flex flexdc">
+						<label for="timer">Таймер</label>
+						<input class="dt-input" type="number" id="timer">
 					</div>
 					<div class="form-block flex flexdc">
 						<label for="start">З якого рядка починати</label>
 						<input class="dt-input" type="number" id="start">
 					</div>
+					<div class="check-parrent flex flexdc">
+					    <label class="custom-checkbox">
+					        <input type="checkbox" id="poslidov" onchange="checkBox('poslidov')">
+					        <span class="checkmark"></span>
+					        Послідовний режим
+					    </label>
+					    <label class="custom-checkbox">
+					        <input type="checkbox" id="mozaika" onchange="checkBox('mozaika')">
+					        <span class="checkmark"></span>
+					        Мозаїчний режим
+					    </label>
+					</div>
+
 					<div class="btncon flex jsc alic"><button id="btn1" onclick="checkStart()" class="form-button">Розпочати</button><div onclick ="gotoForm(`form1`, `form4`)" class="quest flex jsc alic " id="btn1">?</div></div>
 				</div>
 			</div>
@@ -103,18 +127,30 @@
 			</div>
 			<div class="form-main-container dt flex flexdc alic formtwo" id="form4">
 				<div class="header-close flex"><div onclick ="gotoForm(`form4`, `form1`)" id="close" class="close flex jsc alic">X</div></div>
-				<p class="form-name monalter">ВІРШИЧ</p>
+				<p class="form-name monalter">ІНСТРУКЦІЯ</p>
 				<div class="form-main flex flexdc">
 					<div class="form-block flex flexdc">
-						<label for="answer">Інструкція</label>
-						<p class="pinfo">POEMIX (Віршич) створенний для кращого запам'ятовування віршів</p>
-						<p class="pinfo">У перше поле введіть назву вірша а також автора (не обов'язково)</p>
-						<p class="pinfo">У поле "Вірш" вставте скопійований вірш з інтернету</p>
-						<p class="pinfo">Поле складність дає Вам змогу обрати скільки слів у підказці Ви побачите. (Необов)</p>
-						<p class="pinfo">Підказку можна знайти натиснувши на знак питання коли даєте відповідь</p>
-						<p class="pinfo">"З якого рядка починати" - оберіть з якого рядка у вірші починати. (Необов)</p>
-						<p class="pinfo">P.S у нас також є ігнор. спец. символів тому не обов'язково ставити коми та крапки коли пишите відповідь.</p>
-						<p class="pinfo">Ви також маєте можливість збільшити/зменшити розмір натиснувши на A</p>
+						<p class="pinfo">POEMIX (Віршич) створенний для кращого запам'ятовування віршів.</p>
+						<h4 class="hinfo">Навігація</h4>
+						<p class="pinfo">В навігації Ви можете збільшити шрифт (буква А), змінити тему, подивитися свою статистику або перейти на англійську версію сайта</p>
+						<h4 class="hinfo">Обов'язкові поля</h4>
+						<p class="pinfo">У поле "Вірш" вставте скопійований вірш з інтернету.</p>
+						<h4 class="hinfo">Необов'язкові поля</h4>
+						<p class="pinfo">"Назва вірша та автор" - введіть назву вірша та автора (для себе)</p>
+						<p class="pinfo">"Складність" - оберіть скільки слів Ви побачите в підказці.</p>
+						<p class="pinfo">"З якого рядка починати" - оберіть з якого рядка у вірші починати, щоб не починати з першого.</p>
+						<p class="pinfo">"Таймер" - Поставте собі за мету пройти якийсь вірш за певний час.</p>
+						<h4 class="hinfo">Послідовний режим</h4>
+						<p class="pinfo">Послідовний режим - це той режим де Вам потрібно буде встановити правильну послідовність рядків вірша. При цьому режимі краще запам'ятовується хронологія вірша, що також є дуже важливою частиною.</p>
+						<p class="pinfo">У поле кількість рядків оберіть кількість варіантів яку хочете бачити при цьому режимі.</p>
+						<h4 class="hinfo">Мозаїчний режим</h4>
+						<p class="pinfo">Мозаїчний режим (пазловий) - теж саме що і послідовний режим, але якщо в послідовному Ви зазначаєте хронологію рядків, то в мозаїчному режимі послідовність слів в рядку.</p>
+						<h4 class="hinfo">Історія</h4>
+						<p class="pinfo">В історії Ви можете подивитися всі вірші (їхню назву, якщо вказували) а також час, коли Ви вчили цей вірш.</p>
+						<p class="pinfo">Також є дуже крута функція - копіювання. Вона дає змогу натиснувши на потрібну кнопку, відкрити форму вже з текстом вірша.</p>
+						<h4 class="hinfo">Інші деталі</h4>
+						<p class="pinfo">Підказку можна знайти натиснувши на знак питання коли даєте відповідь.</p>
+						<p class="pinfo">У нас також є ігнорування спеціальних символів, тому не обов'язково ставити коми та крапки коли пишите відповідь.</p>
 					</div>
 					<div class="btncon flex jsc alic"><button id="btn1" onclick ="gotoForm(`form4`, `form1`)" class="form-button flex jsc alic dali">Зрозуміло</button></div>
 				</div>
@@ -133,14 +169,53 @@
 					<div class="btncon flex jsc alic"><button id="btn1" onclick ="gotoForm(`form5`, `form1`)" class="form-button flex jsc alic dali">Зрозуміло</button></div>
 				</div>
 			</div>
+			<div class="form-main-container dt flex flexdc alic formtwo" id="form6">
+				<div class="header-close flex"><div onclick ="gotoForm(`form6`, `form1`)" id="close" class="close flex jsc alic">X</div></div>
+
+				<p class="form-name monalter">ВІРШИЧ<p id = "percent" class="percent"></p></p>
+				<div id="select-main" class="form-main flex flexdc">
+					<div class="form-block flex flexdc">
+						<h4 class="monalter choose">Обери правильну послідовність </h4>
+						<p class="monalter">Зараз рядок: <span id="checknow"></span></p>
+						<div class="select-blocks flex flexdc" id="select-block">
+						</div>
+					</div>
+					<div class="btncon flex jsc alic"><button class="form-button flex jsc alic dali" id="btn1" onclick="nextPoslidov()">Далі <img  id ="arrow"src="./Arrow 1.png" alt="arrow"></button><div class="quest flex jsc alic" id="btn1" onclick="gotoForm(`form6`, `form3`)">?</div></div>
+				</div>
+				
+			</div>
+			<div class="form-main-container dt flex flexdc alic formtwo" id="form7">
+				<div class="header-close flex"><div onclick ="gotoForm(`form7`, `form1`)" id="close" class="close flex jsc alic">X</div></div>
+
+				<p class="form-name monalter">ВІРШИЧ</p>
+				<div id="mozaika-main" class="form-main flex flexdc">
+					<div class="form-block flex flexdc" id="mozaika-form">
+						<h4 class="monalter choose">Обери правильну послідовність</h4>
+						<p class="monalter">Зараз рядок: <span id="mozaikanow">1</span></p>
+						<p class="monalter">Відповідь: <span id="mozaikaanswer"></span></p>
+						<div id="mozaika-blocks" class="mozaika-blocks flex jsc alic"></div>
+					</div>
+					<div class="btncon flex jsc alic"><div class="quest flex jsc alic" id="btn1" onclick="gotoForm(`form7`, `form3`)">?</div><button class="form-button flex jsc alic dali" id="btn1" onclick="nextString()">Далі <img  id ="arrow"src="./Arrow 1.png" alt="arrow"></button>
+				<div class="monalter mozaika-delete" onclick="deleteMozaika()"><img src="./deleteword.png" alt="Видалити слово"></div></div>
+				</div>
+				
+			</div>
+		</div>
+		<div id="history-con" class="history-content flex jsc alic">
+			<div class="history-header-main alic dt">
+				<p class="ppp">На сторінці зараз: <span id="numofpoemix">10</span> віршів</p>
+				<p class="ppp" onclick="plusHistory(10)">Додати ще 10 віршів</p>
+			</div>
+			</div>
 		</div>
 		<div class="footer flex alic dt">
 			<div class="footercon flex flexdc">
 				<div class="footer-name monalter">ВІРШИЧ</div>
 				<div class="footer-text">
 					<p>Copyright © Poemix 2024. Всі права захищені.</p>
-					<p>Розроблено розробником adatto (або adattoweb або adonex)</p>
+					<p>Розроблено розробником adattoweb (або adatto)</p>
 					<p>У телеграмі і діскорді @adattoweb</p>
+					<p>Версія Poemix: 2.0.0</p>
 				</div>
 			</div>
 		</div>
