@@ -445,7 +445,7 @@ input::placeholder{
     gap: 6px;
   }
   .nav-list li a {
-    font-size: 14px;
+    font-size: 12px;
   }
   .nav-list{
     gap: 5px;
@@ -482,7 +482,7 @@ input::placeholder{
     height: 40px;
   }
 }
-@media screen and (max-width: 550px){
+@media screen and (max-width: 650px){
   .nav{
     flex-direction: column;
   }
@@ -950,6 +950,10 @@ input::placeholder{
   gap: 10px;
 }
 }
+.update{
+  width: 28px;
+  cursor: pointer;
+}
 @media screen and (max-width: 500px){
 .history-content{
   width: 90%;
@@ -982,6 +986,9 @@ input::placeholder{
   width: 16px;
 }
 .ppp{
-  font-size: 9px;
+  font-size: 10px;
+}
+.update{
+  width: 22px;
 }
 }

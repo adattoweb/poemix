@@ -50,7 +50,7 @@
 			</div>
 			<button onclick = "adaptive()" class="menu-button" type="button" aria-label="close" aria-controls="navigation" aria-expanded="false">
 			</button></div>
-			<div class="timer dt"></div>
+			<div class="timer dt monalter"></div>
 			<div class="stats flex flexdc dt" id="stats">
 				<p>Всього віршів пройдено: <span id="virshstat"></span></p>
 				<p>Всього рядків пройдено: <span id="strstat"></span></p>
@@ -201,7 +201,8 @@
 				
 			</div>
 		</div>
-		<div id="history-con" class="history-content flex jsc alic">
+		<div id="history-con" class="history-content flex jsc alic flexdc">
+			<img onclick="updateHistory()" class="update" src="./update.png" alt="">
 			<div class="history-header-main alic dt">
 				<p class="ppp">На сторінці зараз: <span id="numofpoemix">10</span> віршів</p>
 				<p class="ppp" onclick="plusHistory(10)">Додати ще 10 віршів</p>
@@ -215,7 +216,7 @@
 					<p>Copyright © Poemix 2024. Всі права захищені.</p>
 					<p>Розроблено розробником adattoweb (або adatto)</p>
 					<p>У телеграмі і діскорді @adattoweb</p>
-					<p>Версія Poemix: 2.0.0</p>
+					<p>Версія Poemix: 2.1</p>
 				</div>
 			</div>
 		</div>

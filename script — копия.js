@@ -26,13 +26,13 @@ function trimAll(str){
 	return arr.join("")
 }
 
-let historyLimit = 4;
 let formOne = document.getElementById("form1");
 let formTwo = document.getElementById("form2");
 let formThree = document.getElementById("form3");
 let close = document.getElementById("close");
 let header = document.getElementById("header");
 let virsh = document.getElementById('virsh');
+virsh.value=`123`
 let name = document.getElementById('name');
 let difficult = document.getElementById('difficult');
 let start = document.getElementById('start');
@@ -63,19 +63,6 @@ let content = document.getElementById("content")
 let ht = document.getElementById('ht')
 let timer = document.getElementById('timer')
 let timerBlock = document.querySelector('.timer')
-let timerInterval;
-let timeTimeout;
-let countShow = 0;
-let countCicle = 0;
-let howNeed = 0;
-let countRender = 0;
-let d1 = document.getElementById("d1")
-let numofpoemix = 10;
-
-if(localStorage.getItem("arrKeys") === null){
-	localStorage.setItem('arrKeys', '')
-}
-let historyArr = localStorage.getItem("arrKeys").split(",");
 
 
 // Викликаємо помилки
@@ -122,7 +109,6 @@ function checkBox(id){
 		difcheck.style.display="none";
 	}
 }
-
 
 let isDifficult = false;
 function checkStart(){
@@ -193,12 +179,12 @@ function checkStart(){
 				timerBlock.innerHTML = timer.value
 				timerBlock.style.display="block";
 				let time = 0;
-				timerInterval = setInterval(() => {
+				let timerInterval = setInterval(() => {
 					time++;
 					timerBlock.innerHTML = timer.value - time;
 					console.log("Інтервал працює")
 				}, 1000)
-				timeTimeout = setTimeout(() => {
+				setTimeout(() => {
 					if(poslidov.checked && window.getComputedStyle(timerBlock).display != "none"){
 						gotoForm(`form6`, `form5`)
 						endPoemix(false)
@@ -211,8 +197,7 @@ function checkStart(){
 						}
 					}
 					clearInterval(timerInterval)
-					time = 0;
-					timerBlock.style.display="none"
+						timerBlock.style.display="none"
 				}, timer.value * 1000)
 			}
 
@@ -517,16 +502,12 @@ function resetStats(statName) {
 		console.log("Комірка " + statName + "була успішно анульована.")
 	}
 }
-
 function addHistory(historyKey, historyValue){
-	let currentHistory = localStorage.getItem(`history${historyKey}`)
-	if(localStorage.getItem("arrKeys") === null || localStorage.getItem("arrKeys").length === 0) {
-		localStorage.setItem('arrKeys', `history${historyKey}`)
-	} else {
-		localStorage.setItem('arrKeys', localStorage.getItem("arrKeys") + ',' + `history${historyKey}`)
+	if(localStorage.getItem("arrKeys") === null) {
+		localStorage.setItem('arrKeys', '5')
 	}
-	// console.log(localStorage.getItem("arrKeys"))
-	// console.log(currentHistory)
+	console.log(localStorage.getItem("arrKeys"))
+	let currentHistory = localStorage.getItem(`history${historyKey}`)
 	if(currentHistory) {
 		console.error("Помилка у функції addHistory: Збіг параметрів.")
 		return false
@@ -534,53 +515,34 @@ function addHistory(historyKey, historyValue){
 		localStorage.setItem(`history${historyKey}`, historyValue)
 	}
 }
-
-if(historyArr.length > historyLimit){
-	let tempArr = historyArr.reverse();
-	tempArr = tempArr.slice(0, historyLimit)
-	historyArr = tempArr.reverse();
-	localStorage.setItem('arrKeys', historyArr)
-	console.log("СПРАЦЮВАЛО")
-	console.log(historyArr)
-	console.log(localStorage.getItem('arrKeys'))
-}
-console.log(historyArr)
-console.log(localStorage.getItem(historyArr[0]))
-
-function plusHistory(n){
-	if(numofpoemix >= historyLimit){
-		if(lang.innerHTML.toLowerCase() === "en"){
-			viewError("Більше не можна вивести елементи", 4000)
-		} else viewError("More elements cannot be displayed", 4000)
-	} else {
-		numofpoemix += n;
-		renderHistory(n, false)
-		document.getElementById('numofpoemix').innerHTML = numofpoemix
-	}
-}
-
 function deleteHistory(historyKey){
 	if(localStorage.getItem(historyKey) === null){
 		console.log("Такого елемента не існує!")
 		return false
 	}
-	for(let i = 0; i < historyArr.length; i++){
-		if(historyArr[i].includes(historyKey)){
-			historyArr.splice(i, 1)
-		}
-	}
 	localStorage.removeItem(historyKey)
 	document.getElementById(historyKey).style.display = "none";
+	// historyArr = []
+	// for(let key in localStorage){
+	// 	if(key.includes('history')) historyArr.push([key, localStorage[key]])
+	// }
+	// renderHistory()
 	console.log(historyArr)
-	localStorage.setItem('arrKeys', historyArr)
 	console.log(`Успішно видалено ${historyKey}`)
 }
+
+let historyArr = []
+let d1 = document.getElementById("d1")
+
 function historyShow(){
-	countShow++;
+	historyArr = []
 	content.classList.toggle('active')
-	historycontent.classList.toggle('active')
 	if(ht.innerHTML=== "Історія" || ht.innerHTML === "History") {
-		if(countShow === 1) renderHistory(10) // якщо хочеш зробити щоб рендерилось тільки перший раз
+		historycontent.classList.toggle('active')
+		for(let key in localStorage){
+			if(key.includes('history')) historyArr.push([key, localStorage[key]])
+		}
+		renderHistory()
 		if(lang.innerHTML === "EN") {ht.innerHTML = "Головна"; d1.innerHTML = "Головна"}
 		else {ht.innerHTML = "Main"; d1.innerHTML = "Main"}
 	}
@@ -589,90 +551,53 @@ function historyShow(){
 		else {ht.innerHTML = "History"; d1.innerHTML = "History"}
 	}
 }
-function updateHistory(){
-	countCicle = 0;
-	howNeed = 0;
-	countRender = 0;
-	historyArr = localStorage.getItem("arrKeys").split(",");
-	for(let i = 0; i < historycontent.children.length; i++){
-		if(historycontent.children[i].classList.value.includes("history-block")){
-			historycontent.children[i].style.display="none"
-		}
-	}
-	renderHistory(numofpoemix)
-}
+
 function copyPoemix(data){
 	data = data.split(",")
 	name.value = data[0]
 	virsh.value = data[1];
 	historyShow()
 }
-function renderHistory(n=50, startWithStart = true){
-	countRender++;
 
-	if(historyArr.length === 0 || historyArr[0].length === 0 || localStorage.getItem('arrKeys') === null) {
+function renderHistory(){
+	historycontent.innerHTML = "";
+	// historyArr.sort((a, b) => {
+	// 	let elA = convertToISO(a[0].replace("history", "").replace("_", " "))
+	// 	let elB = convertToISO(b[0].replace("history", "").replace("_", " "))
+	// 	let dateA = new Date(elA)
+	// 	let dateB = new Date(elB)
+	// 	return dateB - dateA
+	// })
+	historycontent.innerHTML = "";
+	if(historyArr.length === 0) {
 		if(lang.innerHTML === "EN"){
 			historycontent.innerHTML = "Упс... Історія пуста, повивчайте декілька віршів щоб поповити її!"
-			return false;
 		} else {
 			historycontent.innerHTML = "Oops... The story is empty, learn some verses to fill it up!"
-			return false;
 		}
 	}
-
-	if(startWithStart === true || countRender === 0) howNeed = historyArr.length;
-	else {
-		howNeed -= n - 1;
-	}
-	console.log(howNeed)
-	console.log(howNeed - n - 1)
-	console.log("---------")
-	for(let i = howNeed-1; i >= 0; i--){
-		countCicle++;
-		if(i === howNeed - n - 1) break;
-		let arrValues = localStorage.getItem(historyArr[i]).split(",")
-		if(lang.innerHTML === "EN"){
-			historycontent.innerHTML += `
-		<div id=${historyArr[i]} class="history-block flex dt">
+	for(let i = 0; i < historyArr.length; i++){
+		historyArr[i][1] = historyArr[i][1].split(",")
+		historycontent.innerHTML += `
+		<div id=${historyArr[i][0]} class="history-block flex dt">
 			<div class="history-one">
 				<div class="history-header flex">
-				<h4 class="history-name">${arrValues[0]}</h4>
+				<h4 class="history-name">${historyArr[i][1][0]}</h4>
 			</div>
 				<div class="history-stats">
 					<h3>Статистика</h3>
-					<p>Всього рядків: <span>${arrValues[1]}</span></p>
-					<p>Всього помилок допущено: <span>${arrValues[2]}</span></p>
-					<p>Всього підглядувань: <span>${arrValues[3]}</span></p>
+					<p>Всього рядків: <span>${historyArr[i][1][1]}</span></p>
+					<p>Всього помилок допущено: <span>${historyArr[i][1][2]}</span></p>
+					<p>Всього підглядувань: <span>${historyArr[i][1][3]}</span></p>
 				</div>
 			</div>
 			<div class="history-two flex flexdc">
-				<p class="history-date">${historyArr[i].replace("history", "").replace("_", " ")}</p>
-				<img onclick="deleteHistory('${historyArr[i]}')" class="history-img" src="./delete.png" alt="Видалити">
-				<img onclick="copyPoemix('${[arrValues[4], arrValues[0]]}')" class="history-img" src="./copy.png" alt="Копіювати">
+				<p class="history-date">${historyArr[i][0].replace("history", "").replace("_", " ")}</p>
+				<img onclick="deleteHistory('${historyArr[i][0]}')" class="history-img" src="./delete.png" alt="Видалити">
+				<img onclick="copyPoemix('${[historyArr[i][1][4], historyArr[i][1][0]]}')" class="history-img" src="./copy.png" alt="Копіювати">
 			</div>
 		</div>`
-		} else {
-		historycontent.innerHTML += `
-		<div id=${historyArr[i]} class="history-block flex dt">
-			<div class="history-one">
-				<div class="history-header flex">
-				<h4 class="history-name">${arrValues[0]}</h4>
-			</div>
-				<div class="history-stats">
-					<h3>Statistics</h3>
-					<p>Total lines: <span>${arrValues[1]}</span></p>
-					<p>Total errors made: <span>${arrValues[2]}</span></p>
-					<p>Total peeks: <span>${arrValues[3]}</span></p>
-				</div>
-			</div>
-			<div class="history-two flex flexdc">
-				<p class="history-date">${historyArr[i].replace("history", "").replace("_", " ")}</p>
-				<img onclick="deleteHistory('${historyArr[i]}')" class="history-img" src="./delete.png" alt="Видалити">
-				<img onclick="copyPoemix('${[arrValues[4], arrValues[0]]}')" class="history-img" src="./copy.png" alt="Копіювати">
-			</div>
-		</div>`
-	}}
-	console.log(countCicle-1)
+	}
 }
 function showPercent(){
 	let percentvalue = 0;
@@ -701,8 +626,6 @@ function showPercent(){
 }
 // Кінець Віршича
 function endPoemix(isNeed = true){
-	clearTimeout(timeTimeout)
-	clearInterval(timerInterval)
 	timerBlock.style.display="none"
 	isDifficult = false;
 	if(isNeed) gotoForm(`form2`, `form5`);
@@ -731,15 +654,6 @@ function endPoemix(isNeed = true){
 		views,
 		strings.join("").replaceAll(",", "")
 		])
-	// for(let i = 0; i < 200; i++){
-	// 	addHistory(dateKey + i, [
-	// 	name.value.length === 0 ? strings[0].replaceAll(",", "") : name.value.replaceAll(",", ""),
-	// 	strings.length,
-	// 	errors,
-	// 	views,
-	// 	strings.join("").replaceAll(",", "")
-	// 	])
-	// }
 }
 let fontCount = 0;
 let all = document.querySelectorAll("*") 
