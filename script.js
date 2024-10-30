@@ -603,8 +603,8 @@ function updateHistory(){
 }
 function copyPoemix(data){
 	data = data.split(",")
-	name.value = data[0]
-	virsh.value = data[1];
+	name.value = data[1]
+	virsh.value = data[0];
 	historyShow()
 }
 function renderHistory(n=50, startWithStart = true){
