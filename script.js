@@ -603,6 +603,7 @@ function updateHistory(){
 }
 function copyPoemix(data){
 	data = data.split(",")
+	console.log(data)
 	name.value = data[1]
 	virsh.value = data[0];
 	historyShow()
@@ -648,7 +649,7 @@ function renderHistory(n=50, startWithStart = true){
 			<div class="history-two flex flexdc">
 				<p class="history-date">${historyArr[i].replace("history", "").replace("_", " ")}</p>
 				<img onclick="deleteHistory('${historyArr[i]}')" class="history-img" src="./delete.png" alt="Видалити">
-				<img onclick="copyPoemix('${[arrValues[4], arrValues[0]]}')" class="history-img" src="./copy.png" alt="Копіювати">
+				<img onclick="copyPoemix(\`${arrValues[4]}, ${arrValues[0]}\`)" class="history-img" src="./copy.png" alt="Копіювати">
 			</div>
 		</div>`
 		} else {
@@ -668,7 +669,7 @@ function renderHistory(n=50, startWithStart = true){
 			<div class="history-two flex flexdc">
 				<p class="history-date">${historyArr[i].replace("history", "").replace("_", " ")}</p>
 				<img onclick="deleteHistory('${historyArr[i]}')" class="history-img" src="./delete.png" alt="Видалити">
-				<img onclick="copyPoemix('${[arrValues[4], arrValues[0]]}')" class="history-img" src="./copy.png" alt="Копіювати">
+				<img onclick="copyPoemix(\`${arrValues[4]}, ${arrValues[0]}\`)" class="history-img" src="./copy.png" alt="Копіювати">
 			</div>
 		</div>`
 	}}
@@ -729,7 +730,7 @@ function endPoemix(isNeed = true){
 		strings.length,
 		errors,
 		views,
-		strings.join("").replaceAll(",", "")
+		virsh.value
 		])
 	// for(let i = 0; i < 200; i++){
 	// 	addHistory(dateKey + i, [
