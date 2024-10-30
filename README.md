@@ -26,6 +26,7 @@
 - Було виправлено баг з таймером, коли він не правильно закінчував свою роботу.
 - Було виправлено баг з неправильним додаванням коми в об'єкт localStorage, із-за чого історія не відображалась.
 - Було додано фунцію оновлення на сторінку історія, щоб висвічювати нові зміни в історії при натисканні на іконку.
+- Було виправлено баг з неправильним копіюванням
 
 
 ## EN
@@ -56,3 +57,4 @@ Fixed a number of bugs, including:
 - Fixed a timer bug that caused it to end incorrectly.
 - Fixed a bug with incorrect comma placement in the `localStorage` object, which prevented the history from displaying.
 - Added a refresh function to the history page so that new changes are displayed when the icon is clicked.
+- A bug with incorrect copying has been fixed
