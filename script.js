@@ -26,7 +26,7 @@ function trimAll(str){
 	return arr.join("")
 }
 
-let historyLimit = 4;
+let historyLimit = 100;
 let formOne = document.getElementById("form1");
 let formTwo = document.getElementById("form2");
 let formThree = document.getElementById("form3");
