@@ -10,7 +10,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="adonexmin.css">
-	<link rel="shortcut icon" href="iconUA.png">
+	<link rel="shortcut icon" href="./images/iconUA.png">
 	<title>adattoweb | ВІРШИЧ</title>
 </head>
 <body id="body">
@@ -44,7 +44,7 @@
   						</label>
 					</div>
 					<div class="info-container" onclick ="showStats(`stats`)">
-						<img src="./info.png" alt="Stats" class="info">
+						<img src="./images/info.png" alt="Stats" class="info">
 					</div>
 				</div>
 			</div>
@@ -111,7 +111,7 @@
 						<label for="answer">Введіть <span id ="enter"></span> рядок</label>
 						<input class="dt-input" type="text" id="answer" oninput="showPercent()">
 					</div>
-					<div class="btncon flex jsc alic"><button class="form-button flex jsc alic dali" id="btn1" onclick="nextString()">Далі <img  id ="arrow"src="./Arrow 1.png" alt="arrow"></button><div class="quest flex jsc alic" id="btn1" onclick="gotoForm(`form2`, `form3`)">?</div></div>
+					<div class="btncon flex jsc alic"><button class="form-button flex jsc alic dali" id="btn1" onclick="nextString()">Далі <img  id ="arrow"src="./images/Arrow 1.png" alt="arrow"></button><div class="quest flex jsc alic" id="btn1" onclick="gotoForm(`form2`, `form3`)">?</div></div>
 				</div>
 			</div>
 			<div class="form-main-container dt flex flexdc alic formtwo" id="form3">
@@ -180,7 +180,7 @@
 						<div class="select-blocks flex flexdc" id="select-block">
 						</div>
 					</div>
-					<div class="btncon flex jsc alic"><button class="form-button flex jsc alic dali" id="btn1" onclick="nextPoslidov()">Далі <img  id ="arrow"src="./Arrow 1.png" alt="arrow"></button><div class="quest flex jsc alic" id="btn1" onclick="gotoForm(`form6`, `form3`)">?</div></div>
+					<div class="btncon flex jsc alic"><button class="form-button flex jsc alic dali" id="btn1" onclick="nextPoslidov()">Далі <img  id ="arrow"src="./images/Arrow 1.png" alt="arrow"></button><div class="quest flex jsc alic" id="btn1" onclick="gotoForm(`form6`, `form3`)">?</div></div>
 				</div>
 				
 			</div>
@@ -195,14 +195,14 @@
 						<p class="monalter">Відповідь: <span id="mozaikaanswer"></span></p>
 						<div id="mozaika-blocks" class="mozaika-blocks flex jsc alic"></div>
 					</div>
-					<div class="btncon flex jsc alic"><div class="quest flex jsc alic" id="btn1" onclick="gotoForm(`form7`, `form3`)">?</div><button class="form-button flex jsc alic dali" id="btn1" onclick="nextString()">Далі <img  id ="arrow"src="./Arrow 1.png" alt="arrow"></button>
-				<div class="monalter mozaika-delete" onclick="deleteMozaika()"><img src="./deleteword.png" alt="Видалити слово"></div></div>
+					<div class="btncon flex jsc alic"><div class="quest flex jsc alic" id="btn1" onclick="gotoForm(`form7`, `form3`)">?</div><button class="form-button flex jsc alic dali" id="btn1" onclick="nextString()">Далі <img  id ="arrow"src="./images/Arrow 1.png" alt="arrow"></button>
+				<div class="monalter mozaika-delete" onclick="deleteMozaika()"><img src="./images//deleteword.png" alt="Видалити слово"></div></div>
 				</div>
 				
 			</div>
 		</div>
 		<div id="history-con" class="history-content flex jsc alic flexdc">
-			<img onclick="updateHistory()" class="update" src="./update.png" alt="">
+			<img onclick="updateHistory()" class="update" src="./images/update.png" alt="">
 			<div class="history-header-main alic dt">
 				<p class="ppp">На сторінці зараз: <span id="numofpoemix">10</span> віршів</p>
 				<p class="ppp" onclick="plusHistory(10)">Додати ще 10 віршів</p>
@@ -213,10 +213,10 @@
 			<div class="footercon flex flexdc">
 				<div class="footer-name monalter">ВІРШИЧ</div>
 				<div class="footer-text">
-					<p>Copyright © Poemix 2024. Всі права захищені.</p>
+					<p>Copyright © Poemix <span id="year"></span>. Всі права захищені.</p>
 					<p>Розроблено розробником adattoweb (або adatto)</p>
 					<p>У телеграмі і діскорді @adattoweb</p>
-					<p>Версія Poemix: 2.1</p>
+					<p>Версія Poemix: 2.2</p>
 				</div>
 			</div>
 		</div>

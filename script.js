@@ -25,6 +25,7 @@ function trimAll(str){
 	}
 	return arr.join("")
 }
+document.getElementById('year').innerHTML = new Date().getFullYear()
 
 let historyLimit = 100;
 let formOne = document.getElementById("form1");
@@ -284,7 +285,7 @@ function nextString(){
 	percent.innerHTML = "0%";
 
 	console.log("Правильна відповідь: " + answerik)
-	let twoRightAnswer = answerik.toLowerCase().replace(/[\.\?,!\-]/g, "").trim()
+	let twoRightAnswer = answerik.toLowerCase().replace(/[\-—:;,.?!'"]/g, "").trim()
 	twoRightAnswer = trimAll(twoRightAnswer)
 	if(mozaika.checked) {
 		userAnswer.value = mozaikaUserAnswer.join("").trim()
@@ -428,12 +429,12 @@ let mozaikaUserAnswer = [];
 function renderMozaika(id){
 	let usesArr = []
 	console.log(strings[id])
-	let mozArr = trimAll(strings[id].toLowerCase().replace(/[\.\?,!\-]/g, "").trim()).split(" "); // по суті wordsArr
+	let mozArr = trimAll(strings[id].toLowerCase().replace(/[\-—:;,.?!'"]/g, "").trim()).split(" "); // по суті wordsArr
 	console.log(mozArr)
 	while(usesArr.length !== mozArr.length){
 		let randN = randomaiser(0, mozArr.length-1)
 		if(usesArr.includes(randN) === false){
-			mozArr[randN] = trimAll(mozArr[randN].toLowerCase().replace(/[\.\?,!\-]/g, "").trim())
+			mozArr[randN] = trimAll(mozArr[randN].toLowerCase().replace(/[\-—:;,.?!'"]/g, "").trim())
 			mozaikaBlocks.innerHTML += `<div id="moz-${randN}" onclick = "chooseMozaika('moz-${randN}')" class="mozaika-child">${mozArr[randN]}</div>`
 			usesArr.push(randN)
 		}
@@ -648,8 +649,8 @@ function renderHistory(n=50, startWithStart = true){
 			</div>
 			<div class="history-two flex flexdc">
 				<p class="history-date">${historyArr[i].replace("history", "").replace("_", " ")}</p>
-				<img onclick="deleteHistory('${historyArr[i]}')" class="history-img" src="./delete.png" alt="Видалити">
-				<img onclick="copyPoemix(\`${arrValues[4]}, ${arrValues[0]}\`)" class="history-img" src="./copy.png" alt="Копіювати">
+				<img onclick="deleteHistory('${historyArr[i]}')" class="history-img" src="./images/delete.png" alt="Видалити">
+				<img onclick="copyPoemix(\`${arrValues[4]}, ${arrValues[0]}\`)" class="history-img" src="./images/copy.png" alt="Копіювати">
 			</div>
 		</div>`
 		} else {
@@ -668,8 +669,8 @@ function renderHistory(n=50, startWithStart = true){
 			</div>
 			<div class="history-two flex flexdc">
 				<p class="history-date">${historyArr[i].replace("history", "").replace("_", " ")}</p>
-				<img onclick="deleteHistory('${historyArr[i]}')" class="history-img" src="./delete.png" alt="Видалити">
-				<img onclick="copyPoemix(\`${arrValues[4]}, ${arrValues[0]}\`)" class="history-img" src="./copy.png" alt="Копіювати">
+				<img onclick="deleteHistory('${historyArr[i]}')" class="history-img" src="./images/delete.png" alt="Видалити">
+				<img onclick="copyPoemix(\`${arrValues[4]}, ${arrValues[0]}\`)" class="history-img" src="./images/copy.png" alt="Копіювати">
 			</div>
 		</div>`
 	}}
@@ -678,9 +679,9 @@ function renderHistory(n=50, startWithStart = true){
 function showPercent(){
 	let percentvalue = 0;
 	let percentcount = 0;
-	let percentanswer = answerik.toLowerCase().replace(/[\.\?,!\-]/g, "").trim();
+	let percentanswer = answerik.toLowerCase().replace(/[\-—:;,.?!'"]/g, "").trim();
 	percentanswer = trimAll(percentanswer)
-	let percentUserAnswer = userAnswer.value.toLowerCase().replace(/[\.\?,!\-]/g, "").trim();
+	let percentUserAnswer = userAnswer.value.toLowerCase().replace(/[\-—:;,.?!'"]/g, "").trim();
 
 	if(userAnswer.value.length > 0){
 		percentvalue = 100 * (percentcount / percentanswer.length).toFixed(2)
@@ -730,7 +731,7 @@ function endPoemix(isNeed = true){
 		strings.length,
 		errors,
 		views,
-		virsh.value
+		virsh.value.replace(/[\-—:;,.?!'"]/g, "").trim()
 		])
 	// for(let i = 0; i < 200; i++){
 	// 	addHistory(dateKey + i, [

@@ -489,7 +489,7 @@ input::placeholder{
   .name{
     font-size: 18px;
   }
-  .footer-text p{
+  .footer-text p, .footer-text span{
     font-size: 12px;
   }
   .footer-name{
