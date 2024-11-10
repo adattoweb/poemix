@@ -12,7 +12,7 @@
 Також є опція обирати складність коли користувач натискає перевірити рядок. 
 При складній складності висвічується перше слово, при середній - кожне друге слово пропадає, і так далі.
 
-### ОНОВЛЕННЯ 2.0.0
+### ОНОВЛЕННЯ 2.0
 **Нові зміни:**
 - Додано послідовний режим (детальніше в інструкції на сайті)
 - Додано мозаїчний режим (детальніше в інструкції на сайті)
@@ -21,8 +21,6 @@
 - Додано опцію таймер за допомогою якої можна встановлювати собі таймер, та намагатися пройти вірш за деякий час.
 
 ### ОНОВЛЕННЯ 2.1
-Тепер усі версії рахуються не n.n.n, а n.n де перша цифра - масштабне оновлення, а друга цифра - оновлення над масштабним оновленням.
-
 Виправлено ряд багів зокрема:
 - Було виправлено баг з таймером, коли він не правильно закінчував свою роботу.
 - Було виправлено баг з неправильним додаванням коми в об'єкт localStorage, із-за чого історія не відображалась.
@@ -47,7 +45,7 @@ The statistics show how many times a user has reviewed/studied poems and the num
 Additionally, users can choose the difficulty level when checking a line. In high difficulty, 
 only the first word is shown; in medium difficulty, every second word disappears, and so on.
 
-### UPDATE 2.0.0
+### UPDATE 2.0
 **New Changes:**
 - Added Sequential Mode (more details in the instructions on the website)
 - Added Mosaic Mode (more details in the instructions on the website)
@@ -56,8 +54,6 @@ only the first word is shown; in medium difficulty, every second word disappears
 - Added a timer option that allows users to set a timer and try to complete the poem within a specified time
 
 ### UPDATE 2.1
-All versions are now counted as n.n, where the first digit represents a major update, and the second digit represents an update to that major release.
-
 Fixed a number of bugs, including:
 - Fixed a timer bug that caused it to end incorrectly.
 - Fixed a bug with incorrect comma placement in the `localStorage` object, which prevented the history from displaying.
