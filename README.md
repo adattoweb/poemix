@@ -13,7 +13,7 @@
 При складній складності висвічується перше слово, при середній - кожне друге слово пропадає, і так далі.
 
 ### ОНОВЛЕННЯ 2.0.0
-Нові зміни:
+**Нові зміни:**
 - Додано послідовний режим (детальніше в інструкції на сайті)
 - Додано мозаїчний режим (детальніше в інструкції на сайті)
 - Покращено візуальний вигляд інструкції
@@ -28,6 +28,10 @@
 - Було виправлено баг з неправильним додаванням коми в об'єкт localStorage, із-за чого історія не відображалась.
 - Було додано фунцію оновлення на сторінку історія, щоб висвічювати нові зміни в історії при натисканні на іконку.
 - Було виправлено баг з неправильним копіюванням
+
+### ОНОВЛЕННЯ 2.2
+- Виправленно баги
+- Покращенно структуру проєкта
 
 
 ## EN
@@ -59,3 +63,7 @@ Fixed a number of bugs, including:
 - Fixed a bug with incorrect comma placement in the `localStorage` object, which prevented the history from displaying.
 - Added a refresh function to the history page so that new changes are displayed when the icon is clicked.
 - A bug with incorrect copying has been fixed
+
+### UPDATE 2.2
+- Fixed bugs
+- Improved project structure
