@@ -17,7 +17,7 @@
 - Додано послідовний режим (детальніше в інструкції на сайті)
 - Додано мозаїчний режим (детальніше в інструкції на сайті)
 - Покращено візуальний вигляд інструкції
-- Додано сторінку Історія де користувач може дивитися останні вірші які він проходив, а також наново їх проходити.
+- Додано сторінку "Історія" де користувач може дивитися останні вірші які він проходив, а також наново їх проходити.
 - Додано опцію таймер за допомогою якої можна встановлювати собі таймер, та намагатися пройти вірш за деякий час.
 
 ### ОНОВЛЕННЯ 2.1
@@ -52,8 +52,8 @@ only the first word is shown; in medium difficulty, every second word disappears
 - Added Sequential Mode (more details in the instructions on the website)
 - Added Mosaic Mode (more details in the instructions on the website)
 - Improved the visual layout of the instructions
-- Added a History page where users can view recent poems they’ve completed and retry them
-- Added a Timer option that allows users to set a timer and try to complete the poem within a specified time
+- Added a "History" page where users can view recent poems they’ve completed and retry them
+- Added a timer option that allows users to set a timer and try to complete the poem within a specified time
 
 ### UPDATE 2.1
 All versions are now counted as n.n, where the first digit represents a major update, and the second digit represents an update to that major release.
